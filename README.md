@@ -1,2 +1,3 @@
-# conf
-a
+hosts --->   /etc/
+
+.vimrc   ------ > ~/
