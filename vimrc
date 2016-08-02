@@ -175,7 +175,7 @@ Plugin 'taglist.vim'
 Plugin 'The-NERD-tree'        
 
 "彩虹括号
-Plugin 'luochen1990/rainbow'    
+"Plugin 'luochen1990/rainbow'    
 
 "文件跳转兄弟俩
 "Plugin 'FuzzyFinder'  
@@ -333,6 +333,7 @@ let g:EasyMotion_leader_key='<Space>'
 "************************************************************
 "       python mode                                         *
 "************************************************************
+
 let g:pymode = 1                        "关闭和打开python-mode插件
 let g:pymode_python = 'python3'         "or python3, disable. “选择python的版本
 let g:pymode_indent = 1                 "使用缩进的风格为pep8
@@ -347,8 +348,41 @@ let g:pymode_breakpoint_bind = '<leader>b' "自动加入断点语句
 
 
 
+"************************************************************
+"                         slimv                           *
+"************************************************************
 
+execute pathogen#infect()
+syntax enable
+set number
+set autoindent
+filetype plugin indent on
 
+" vim-slime  options
+" Clojure options.
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
 
+" rainbow_parentheses options
+autocmd Syntax clojure RainbowParenthesesLoadRound
+autocmd BufEnter *.clj RainbowParenthesesToggle
+autocmd BufLeave *.clj RainbowParenthesesToggle
 
+let g:rbpt_colorpairs = [
+    \ ['magenta',     'purple1'],
+    \ ['cyan',        'magenta1'],
+    \ ['green',       'slateblue1'],
+    \ ['yellow',      'cyan1'],
+    \ ['red',         'springgreen1'],
+    \ ['magenta',     'green1'],
+    \ ['cyan',        'greenyellow'],
+    \ ['green',       'yellow1'],
+    \ ['yellow',      'orange1'],
+    \ ]
+let g:rbpt_max =9
 
+" vim-clojure-static options
+let g:clojure_syntax_keywords = {
+    \ 'clojureMacro': ["defproject", "defcustom"],
+    \ 'clojureFunc': ["string/join", "string/replace"]
+    \ }
