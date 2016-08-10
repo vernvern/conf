@@ -175,10 +175,10 @@ Plugin 'taglist.vim'
 Plugin 'The-NERD-tree'        
 
 "彩虹括号
-"Plugin 'luochen1990/rainbow'    
+Plugin 'luochen1990/rainbow'    
 
 "文件跳转兄弟俩
-"Plugin 'FuzzyFinder'  
+Plugin 'FuzzyFinder'  
 Plugin 'L9'   
 
 "很美观实用的状态栏 
@@ -195,7 +195,12 @@ Plugin 'Syntastic'                        "语法检查
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 
+"界面UI   ??不成功
 "Plugin 'altercation/vim-color-solarized'
+
+Plugin 'mattn/emmet-vim'
+
+
 
 "Brief help of vundle
 
@@ -349,7 +354,7 @@ let g:pymode_breakpoint_bind = '<leader>b' "自动加入断点语句
 
 
 "************************************************************
-"                         slimv                           *
+"                           slimv                           *
 "************************************************************
 
 execute pathogen#infect()
@@ -386,3 +391,21 @@ let g:clojure_syntax_keywords = {
     \ 'clojureMacro': ["defproject", "defcustom"],
     \ 'clojureFunc': ["string/join", "string/replace"]
     \ }
+
+
+"************************************************************
+"                       emmet-vim                           *
+"************************************************************
+
+"suger~
+let g:uesr_emmet_leader_key='C-e'
+
+"enable just for html/css
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+"enable in which mode
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+"let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+"let g:user_emmet_mode='a'    "enable all function in all mode.
+
