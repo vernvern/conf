@@ -1,7 +1,6 @@
-hosts --->   /etc/
+hosts --->   /etc/hosts
 ------
-.vimrc   ------ > ~/
+vimrc   ------ > ~/.vimrc
 --------
-pip 
-
-cmdoptions.py ---------- >    usr/local/lib/python3.5/dist-packages/pip/
+pip.conf    ~/.pip/pip.conf
+------------

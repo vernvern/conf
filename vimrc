@@ -64,7 +64,7 @@ set cmdheight =2
 
 
 "显示行号
-set number
+"set number
  
 "设置在编辑过程中右下角显示光标的行列信息
 set ruler
@@ -189,7 +189,10 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'Valloric/ListToggle'
 Plugin 'Syntastic'                        "语法检查
 
+"python
 "Plugin 'klen/python-mode'
+
+
 
 "传递路径，合理设置运行时路径。 
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -321,8 +324,9 @@ let g:ycm_collect_identifiers_from_tag_files = 1
 let g:Syntastic_check_on_open=1
 let g:syntastic_error_symbol='✗'
 
-"let g:syntastic_python_python_exe = 'python3'
-
+let g:syntastic_python_python_exe = 'python3'
+"禁止syntatic 对python 的检查
+let g:syntastic_ignore_files=[".*\.py$"]
 
 "************************************************************
 "         rainbow  彩虹括号                                 *
@@ -339,17 +343,55 @@ let g:EasyMotion_leader_key='<Space>'
 "       python mode                                         *
 "************************************************************
 
-let g:pymode = 1                        "关闭和打开python-mode插件
-let g:pymode_python = 'python3'         "or python3, disable. “选择python的版本
-let g:pymode_indent = 1                 "使用缩进的风格为pep8
-let g:pymode_folding = 1                "使能折叠功能
-let g:pymode_doc = 1                    " 通过命令:PymodeDoc arg查阅文档
-let g:pymode_doc_bind = "<C-z>"             "光标移到参数上面按快捷键a
-let g:pymode_rope_goto_definition_bind = "<C-]>"    "跳转到函数定义
+
+
+
+
+let g:pymode = 1 "关闭和打开python-mode插件
+
+
+let g:pymode_python = 'python3' "or python3, disable. 选择python的版本
+
+
+let g:pymode_indent = 0 "1 使用缩进的风格为pep8
+
+
+let g:pymode_folding = 0 "1使能折叠功能
+
+
+let g:pymode_doc = 1 " 通过命令:PymodeDoc arg查阅文档
+
+let g:pymode_doc_bind = 'K' "光标移到参数上面按快捷键K
+
+
 let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'     "在vim中运行
+
+let g:pymode_run_bind = '<leader>r' "在vim中运行
+
 
 let g:pymode_breakpoint_bind = '<leader>b' "自动加入断点语句
+
+
+let g:pymode_lint_on_write = 1 "修改后检查
+
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']   " choose from pylint, pep8, mccabe, pep257, pyflakes
+
+let g:pymode_rope_ropefolder='.ropeproject' "项目文件在的目录
+
+let g:pymode_rope_show_doc_bind = '<C-c>d' "查阅帮助文档
+
+
+"语法补全命令：<C-P>/<C-N>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -357,48 +399,48 @@ let g:pymode_breakpoint_bind = '<leader>b' "自动加入断点语句
 "                           slimv                           *
 "************************************************************
 
-execute pathogen#infect()
-syntax enable
-set number
-set autoindent
-filetype plugin indent on
-
-" vim-slime  options
-" Clojure options.
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
-
-" rainbow_parentheses options
-autocmd Syntax clojure RainbowParenthesesLoadRound
-autocmd BufEnter *.clj RainbowParenthesesToggle
-autocmd BufLeave *.clj RainbowParenthesesToggle
-
-let g:rbpt_colorpairs = [
-    \ ['magenta',     'purple1'],
-    \ ['cyan',        'magenta1'],
-    \ ['green',       'slateblue1'],
-    \ ['yellow',      'cyan1'],
-    \ ['red',         'springgreen1'],
-    \ ['magenta',     'green1'],
-    \ ['cyan',        'greenyellow'],
-    \ ['green',       'yellow1'],
-    \ ['yellow',      'orange1'],
-    \ ]
-let g:rbpt_max =9
-
-" vim-clojure-static options
-let g:clojure_syntax_keywords = {
-    \ 'clojureMacro': ["defproject", "defcustom"],
-    \ 'clojureFunc': ["string/join", "string/replace"]
-    \ }
-
+"execute pathogen#infect()
+"syntax enable
+"set number
+"set autoindent
+"filetype plugin indent on
+"
+"" vim-slime  options
+"" Clojure options.
+"let g:slime_target = "tmux"
+"let g:slime_paste_file = "$HOME/.slime_paste"
+"
+"" rainbow_parentheses options
+"autocmd Syntax clojure RainbowParenthesesLoadRound
+"autocmd BufEnter *.clj RainbowParenthesesToggle
+"autocmd BufLeave *.clj RainbowParenthesesToggle
+"
+"let g:rbpt_colorpairs = [
+"    \ ['magenta',     'purple1'],
+"    \ ['cyan',        'magenta1'],
+"    \ ['green',       'slateblue1'],
+"    \ ['yellow',      'cyan1'],
+"    \ ['red',         'springgreen1'],
+"    \ ['magenta',     'green1'],
+"    \ ['cyan',        'greenyellow'],
+"    \ ['green',       'yellow1'],
+"    \ ['yellow',      'orange1'],
+"    \ ]
+"let g:rbpt_max =9
+"
+"" vim-clojure-static options
+"let g:clojure_syntax_keywords = {
+"    \ 'clojureMacro': ["defproject", "defcustom"],
+"    \ 'clojureFunc': ["string/join", "string/replace"]
+"    \ }
+"
 
 "************************************************************
-"                       emmet-vim                           *
+"                       emmet-vim      html                 *
 "************************************************************
 
 "suger~
-let g:uesr_emmet_leader_key='C-e'
+"let g:uesr_emmet_leader_key='C-y'
 
 "enable just for html/css
 let g:user_emmet_install_global = 0
