@@ -64,7 +64,7 @@ set cmdheight =2
 
 
 "显示行号
-"set number
+set number
  
 "设置在编辑过程中右下角显示光标的行列信息
 set ruler
@@ -133,6 +133,7 @@ filetype plugin on
 "启动智能补全
 filetype plugin indent on
 
+
 " 状态行颜色
 highlight StatusLine guifg=SlateBlue guibg=Yellow
 highlight StatusLineNC guifg=Gray guibg=White
@@ -178,8 +179,8 @@ Plugin 'The-NERD-tree'
 Plugin 'luochen1990/rainbow'    
 
 "文件跳转兄弟俩
-Plugin 'FuzzyFinder'  
-Plugin 'L9'   
+"Plugin 'FuzzyFinder'  
+"Plugin 'L9'   
 
 "很美观实用的状态栏 
 Plugin 'Lokaltog/vim-powerline' 
@@ -190,9 +191,10 @@ Plugin 'Valloric/ListToggle'
 Plugin 'Syntastic'                        "语法检查
 
 "python
-"Plugin 'klen/python-mode'
+Plugin 'klen/python-mode'
 
-
+"python 语法检查(error)
+"Plugin 'kevinw/pyflakes-vim'
 
 "传递路径，合理设置运行时路径。 
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -201,6 +203,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "界面UI   ??不成功
 "Plugin 'altercation/vim-color-solarized'
 
+"html
 Plugin 'mattn/emmet-vim'
 
 
@@ -271,7 +274,7 @@ let NERDTreeAutoCenter=1
 let NERDTreeMouseMode=2
  
 "打开文件后自动关闭
-let NERDTreeQuitOnOpen=1
+"let NERDTreeQuitOnOpen=1
  
 "显示文件
 let NERDTreeShowFiles=1
@@ -289,16 +292,21 @@ let NERDTreeHightCursorline=1
 let NERDTreeWinPos='left'
  
 "窗口宽度
-let NERDTreeWinSize=31
+let NERDTreeWinSize=21
  
 "不显示'Bookmarks' label 'Press ? for help'
 let NERDTreeMinimalUI=1
  
 "快捷键
 nnoremap <silent> <F4> :NERDTreeToggle<CR>
- 
-"autocmd vimenter * NERDTree "打开vim时自动打开NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif           "如果打开的文件除了NERDTree没有其他文件时，它自动关闭
+
+"打开vim时自动打开NERDTree
+autocmd vimenter * NERDTree 
+
+"如果打开的文件除了NERDTree没有其他文件时，它自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif           
+
+
 "*****************************************************
 "           YouCompleteMe配置                        *
 "*****************************************************
@@ -353,7 +361,7 @@ let g:pymode = 1 "关闭和打开python-mode插件
 let g:pymode_python = 'python3' "or python3, disable. 选择python的版本
 
 
-let g:pymode_indent = 0 "1 使用缩进的风格为pep8
+let g:pymode_indent = 1 "1 使用缩进的风格为pep8
 
 
 let g:pymode_folding = 0 "1使能折叠功能
@@ -399,41 +407,41 @@ let g:pymode_rope_show_doc_bind = '<C-c>d' "查阅帮助文档
 "                           slimv                           *
 "************************************************************
 
-"execute pathogen#infect()
-"syntax enable
-"set number
-"set autoindent
-"filetype plugin indent on
-"
-"" vim-slime  options
-"" Clojure options.
-"let g:slime_target = "tmux"
-"let g:slime_paste_file = "$HOME/.slime_paste"
-"
-"" rainbow_parentheses options
-"autocmd Syntax clojure RainbowParenthesesLoadRound
-"autocmd BufEnter *.clj RainbowParenthesesToggle
-"autocmd BufLeave *.clj RainbowParenthesesToggle
-"
-"let g:rbpt_colorpairs = [
-"    \ ['magenta',     'purple1'],
-"    \ ['cyan',        'magenta1'],
-"    \ ['green',       'slateblue1'],
-"    \ ['yellow',      'cyan1'],
-"    \ ['red',         'springgreen1'],
-"    \ ['magenta',     'green1'],
-"    \ ['cyan',        'greenyellow'],
-"    \ ['green',       'yellow1'],
-"    \ ['yellow',      'orange1'],
-"    \ ]
-"let g:rbpt_max =9
-"
-"" vim-clojure-static options
-"let g:clojure_syntax_keywords = {
-"    \ 'clojureMacro': ["defproject", "defcustom"],
-"    \ 'clojureFunc': ["string/join", "string/replace"]
-"    \ }
-"
+execute pathogen#infect()
+syntax enable
+set number
+set autoindent
+filetype plugin indent on
+
+" vim-slime  options
+" Clojure options.
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+
+" rainbow_parentheses options
+autocmd Syntax clojure RainbowParenthesesLoadRound
+autocmd BufEnter *.clj RainbowParenthesesToggle
+autocmd BufLeave *.clj RainbowParenthesesToggle
+
+let g:rbpt_colorpairs = [
+    \ ['magenta',     'purple1'],
+    \ ['cyan',        'magenta1'],
+    \ ['green',       'slateblue1'],
+    \ ['yellow',      'cyan1'],
+    \ ['red',         'springgreen1'],
+    \ ['magenta',     'green1'],
+    \ ['cyan',        'greenyellow'],
+    \ ['green',       'yellow1'],
+    \ ['yellow',      'orange1'],
+    \ ]
+let g:rbpt_max =9
+
+" vim-clojure-static options
+let g:clojure_syntax_keywords = {
+    \ 'clojureMacro': ["defproject", "defcustom"],
+    \ 'clojureFunc': ["string/join", "string/replace"]
+    \ }
+
 
 "************************************************************
 "                       emmet-vim      html                 *
@@ -450,4 +458,11 @@ autocmd FileType html,css EmmetInstall
 let g:user_emmet_mode='n'    "only enable normal mode functions.
 "let g:user_emmet_mode='inv'  "enable all functions, which is equal to
 "let g:user_emmet_mode='a'    "enable all function in all mode.
+
+"************************************************************
+"                      pyflaskes      python                *
+"************************************************************
+"禁止
+"let g:pyflakes_use_quickfix = 0
+
 
