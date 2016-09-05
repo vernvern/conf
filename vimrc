@@ -301,7 +301,8 @@ let NERDTreeMinimalUI=1
 nnoremap <silent> <F4> :NERDTreeToggle<CR>
 
 "打开vim时自动打开NERDTree
-autocmd vimenter * NERDTree 
+"autocmd vimenter * NERDTree 
+
 
 "如果打开的文件除了NERDTree没有其他文件时，它自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif           
