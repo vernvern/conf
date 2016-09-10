@@ -58,7 +58,10 @@ endif
 "********************************************************
 "                   一般性配置                          *
 "********************************************************
- 
+
+"-----------------------正常配置
+
+
 set laststatus =2
 set cmdheight =2
 
@@ -148,6 +151,27 @@ set laststatus=2
 set t_Co=256
 let g:Powline_symbols='fancy'
 
+
+
+" Enable folding  代码折叠
+set foldmethod=indent
+set foldlevel=99
+"Enable folding with the spacebar   error
+"nnoremap <space> za
+
+
+"-----------------------------python
+au BufNewFile,BufRead *.py
+            \ set tabstop=4
+            \ set softtabstop=4
+            \ set shiftwidth=4
+            \ set textwidth=79
+            \ set expandtab
+            \ set autoindent
+            \ set fileformat=unix
+
+
+
 "************************************************************
 "         vundle
 "************************************************************
@@ -164,7 +188,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 "优雅的在vim里使用git 
-Plugin 'tpope/vim-fugitive'   
+"Plugin 'tpope/vim-fugitive'   
 
 "优雅的跳转～
 Plugin 'Lokaltog/vim-easymotion'  
@@ -190,11 +214,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'Valloric/ListToggle'
 Plugin 'Syntastic'                        "语法检查
 
-"python
-Plugin 'klen/python-mode'
-
-"python 语法检查(error)
-"Plugin 'kevinw/pyflakes-vim'
 
 "传递路径，合理设置运行时路径。 
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -207,6 +226,12 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'mattn/emmet-vim'
 
 
+"python 语法检查 F7
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/pylint.vim'
+
+"关于缩进
+Plugin 'tmhedberg/SimpylFold'
 
 "Brief help of vundle
 
@@ -233,7 +258,7 @@ let g:ycm_path_to_python_interpreter="/usr/bin/python"
 "不显示"press F1 to display help"
 let Tlist_Compact_Format=1
  
-"窗口在左侧显示
+"窗口在右侧显示
 let Tlist_Use_Right_Window=1
  
 "只显示当前文件的tags
@@ -303,6 +328,8 @@ nnoremap <silent> <F4> :NERDTreeToggle<CR>
 "打开vim时自动打开NERDTree
 "autocmd vimenter * NERDTree 
 
+"忽略 *.pyc
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 "如果打开的文件除了NERDTree没有其他文件时，它自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif           
@@ -461,9 +488,17 @@ let g:user_emmet_mode='n'    "only enable normal mode functions.
 "let g:user_emmet_mode='a'    "enable all function in all mode.
 
 "************************************************************
-"                      pyflaskes      python                *
+"                    tmhedberg/SimpylFold   代码缩进        *
 "************************************************************
-"禁止
-"let g:pyflakes_use_quickfix = 0
+
+"显示文档字符串
+let g:SimpylFold_docstring_preview=1
+
+
+
+
+
+
+
 
 
