@@ -161,15 +161,6 @@ set foldlevel=99
 
 
 "-----------------------------python
-au BufNewFile,BufRead *.py
-            \ set tabstop=4
-            \ set softtabstop=4
-            \ set shiftwidth=4
-            \ set textwidth=79
-            \ set expandtab
-            \ set autoindent
-            \ set fileformat=unix
-
 
 
 "************************************************************
@@ -212,7 +203,7 @@ Plugin 'Lokaltog/vim-powerline'
 "自动补全三剑客
 Plugin 'Valloric/YouCompleteMe'  
 Plugin 'Valloric/ListToggle'
-Plugin 'Syntastic'                        "语法检查
+Plugin 'syntastic'                 "语法检查
 
 
 "传递路径，合理设置运行时路径。 
@@ -358,6 +349,7 @@ let g:ycm_collect_identifiers_from_tag_files = 1
 "*****************************************************
 
 let g:Syntastic_check_on_open=1
+
 let g:syntastic_error_symbol='✗'
 
 let g:syntastic_python_python_exe = 'python3'
@@ -374,56 +366,6 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 "         Lokaltog/vim-easymotion  跳转                     *
 "************************************************************
 let g:EasyMotion_leader_key='<Space>'
-
-"************************************************************
-"       python mode                                         *
-"************************************************************
-
-
-
-
-
-let g:pymode = 1 "关闭和打开python-mode插件
-
-
-let g:pymode_python = 'python3' "or python3, disable. 选择python的版本
-
-
-let g:pymode_indent = 1 "1 使用缩进的风格为pep8
-
-
-let g:pymode_folding = 0 "1使能折叠功能
-
-
-let g:pymode_doc = 1 " 通过命令:PymodeDoc arg查阅文档
-
-let g:pymode_doc_bind = 'K' "光标移到参数上面按快捷键K
-
-
-let g:pymode_run = 1
-
-let g:pymode_run_bind = '<leader>r' "在vim中运行
-
-
-let g:pymode_breakpoint_bind = '<leader>b' "自动加入断点语句
-
-
-let g:pymode_lint_on_write = 1 "修改后检查
-
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']   " choose from pylint, pep8, mccabe, pep257, pyflakes
-
-let g:pymode_rope_ropefolder='.ropeproject' "项目文件在的目录
-
-let g:pymode_rope_show_doc_bind = '<C-c>d' "查阅帮助文档
-
-
-"语法补全命令：<C-P>/<C-N>
-
-
-
-
-
-
 
 
 
@@ -493,9 +435,6 @@ let g:user_emmet_mode='n'    "only enable normal mode functions.
 
 "显示文档字符串
 let g:SimpylFold_docstring_preview=1
-
-
-
 
 
 
