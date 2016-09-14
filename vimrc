@@ -161,6 +161,18 @@ set foldlevel=99
 
 
 "-----------------------------python
+"根据文件类型自动插入文件头
+autocmd BufNewFile *.py,*.sh exec ":call SetTitle()"
+func SetTitle()
+call setline(1, "\#!/usr/bin/env python3")
+call append(line("."), "\#coding:utf-8")
+call append(line(".")+1, "")
+call append(line(".")+2, "")
+endfunc 
+"新建文件后自动定位至文件末尾
+autocmd BufNewFile * normal G
+"F2去空行
+nnoremap <F2> :g/^\s*$/d<CR>
 
 
 "************************************************************
