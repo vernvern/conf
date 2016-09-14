@@ -165,7 +165,7 @@ set foldlevel=99
 autocmd BufNewFile *.py,*.sh exec ":call SetTitle()"
 func SetTitle()
 call setline(1, "\#!/usr/bin/env python3")
-call append(line("."), "\#coding:utf-8")
+call append(line("."), "\# -*- coding:utf-8 -*-")
 call append(line(".")+1, "")
 call append(line(".")+2, "")
 endfunc 
