@@ -62,6 +62,10 @@ endif
 "-----------------------正常配置
 
 
+
+"去掉vi的一致性
+set nocompatible              " be iMproved, required
+
 set laststatus =2
 set cmdheight =2
 
@@ -82,9 +86,12 @@ set history=1000
 set nobackup
 set noswapfile
  
-"设置匹配模式
+"显示匹配括号
 set showmatch
- 
+
+"文件编码
+set fenc=utf-8
+
 "设置C/C++方式自动对齐
 set autoindent
 set cindent
@@ -93,6 +100,15 @@ set cindent
 syntax enable
 syntax on
  
+"高亮搜索项
+set hlsearch
+
+"突出显示当前行
+set cursorline
+
+"突出显示当前列
+"set cursorcolumn
+
 "指定配色方案为256色
 set t_Co=256
  
@@ -178,7 +194,6 @@ nnoremap <F2> :g/^\s*$/d<CR>
 "************************************************************
 "         vundle
 "************************************************************
-set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -193,17 +208,22 @@ Plugin 'VundleVim/Vundle.vim'
 "优雅的在vim里使用git 
 "Plugin 'tpope/vim-fugitive'   
 
+
 "优雅的跳转～
 Plugin 'Lokaltog/vim-easymotion'  
+
 
 "显示当前文件中的宏、全局变量、函数等
 Plugin 'taglist.vim'                  
 
+
 "树形的文件系统浏览器
 Plugin 'The-NERD-tree'        
 
+
 "彩虹括号
-Plugin 'luochen1990/rainbow'    
+Plugin 'kien/rainbow_parentheses.vim'    
+
 
 "文件跳转兄弟俩
 "Plugin 'FuzzyFinder'  
@@ -211,6 +231,7 @@ Plugin 'luochen1990/rainbow'
 
 "很美观实用的状态栏 
 Plugin 'Lokaltog/vim-powerline' 
+
 
 "自动补全三剑客
 Plugin 'Valloric/YouCompleteMe'  
@@ -235,6 +256,8 @@ Plugin 'vim-scripts/pylint.vim'
 
 "关于缩进
 Plugin 'tmhedberg/SimpylFold'
+
+Plugin 'Yggdroot/indentLine'
 
 "Brief help of vundle
 
@@ -355,7 +378,21 @@ let g:ycm_confirm_extra_conf=0
 "使用ctags生成的tags文件
 let g:ycm_collect_identifiers_from_tag_files = 1 
  
+
+"补全后自动关闭预览窗口"
+let g:ycm_autoclose_preview_window_after_completion=1
  
+
+"是否在注释中也开启补全"
+let g:ycm_complete_in_comments=1
+
+"字符串中也开启补全"
+let g:ycm_complete_in_strings = 1
+
+"离开插入模式后自动关闭预览窗口"
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+
 "*****************************************************
 "          Syntastic配置    用于语法检查             *
 "*****************************************************
@@ -447,6 +484,43 @@ let g:user_emmet_mode='n'    "only enable normal mode functions.
 
 "显示文档字符串
 let g:SimpylFold_docstring_preview=1
+
+
+"************************************************************
+"                    indentLine    缩进指示线               *
+"************************************************************
+
+"开关，1开0关
+let g:indentLine_setColors = 1
+
+" Vim
+let g:indentLine_color_term = 150
+
+"指示线符号   ¦  ┆  │
+let g:indentLine_char = '|'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
