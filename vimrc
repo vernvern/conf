@@ -222,8 +222,8 @@ Plugin 'The-NERD-tree'
 
 
 "彩虹括号
-Plugin 'kien/rainbow_parentheses.vim'    
-
+"Plugin 'kien/rainbow_parentheses.vim'    
+Plugin 'luochen1990/rainbow'
 
 "文件跳转兄弟俩
 "Plugin 'FuzzyFinder'  
@@ -500,7 +500,12 @@ let g:indentLine_color_term = 150
 let g:indentLine_char = '|'
 
 
+"************************************************************
+"              Rainbow Parentheses  彩虹括号                *
+"************************************************************
 
+"0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 1 
 
 
 
