@@ -22,10 +22,10 @@ apt install vim -y
 ln -s ~/conf/vimrc  ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 mkdir ~/.vim/autoload
-wget https://tpo.pe/pathogen.vim ~/vim/autoload
-git clone https://github.com/kien/rainbow_parentheses.vim ~/.vim/bundle/
-git clone https://github.com/jpalardy/vim-slime ~/.vim/bundle/
-git clone https://github.com/guns/vim-clojure-static ~/.vim/bundle/
+#wget https://tpo.pe/pathogen.vim -p ~/vim/autoload/pathogen.vim
+git clone https://github.com/kien/rainbow_parentheses.vim ~/.vim/bundle/rainbow_parentheses.vim
+git clone https://github.com/jpalardy/vim-slime ~/.vim/bundle/vim-slime
+git clone https://github.com/guns/vim-clojure-static ~/.vim/bundle/vim-clojure-static
 p ~/conf/tmux.conf ~/.tmux.conf 
 
 
