@@ -1,4 +1,7 @@
-"git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" git clone https://github.com/kien/rainbow_parentheses.vim
+" git clone https://github.com/jpalardy/vim-slime
+
 
 
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
@@ -276,7 +279,6 @@ filetype plugin indent on
 "****************************************************************
 
 
-let g:ycm_path_to_python_interpreter="/usr/bin/python"
 "*****************************************************
 "                   taglist配置                      *
 "*****************************************************
@@ -365,7 +367,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
 "           YouCompleteMe配置                        *
 "*****************************************************
  
- 
+"使用python3编译
+let g:ycm_path_to_python_interpreter="/usr/bin/python3"
+
 "配置默认的ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' 
  
