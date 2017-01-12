@@ -181,7 +181,8 @@ set foldlevel=99
 
 "-----------------------------python
 "根据文件类型自动插入文件头
-autocmd BufNewFile *.py,*.sh exec ":call SetTitle()"
+"autocmd BufNewFile *.py,*.sh exec ":call SetTitle()"
+autocmd BufNewFile *.py exec ":call SetTitle()"
 func SetTitle()
 call setline(1, "\#!/usr/bin/env python3")
 call append(line("."), "\# -*- coding:utf-8 -*-")
