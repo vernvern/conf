@@ -24,6 +24,7 @@ runtime! debian.vim
 " line enables syntax highlighting by default.
 if has("syntax")
   syntax on
+
 endif
 
 " If using a dark background within the editing area and syntax highlighting
@@ -98,11 +99,14 @@ set fenc=utf-8
 "设置C/C++方式自动对齐
 set autoindent
 set cindent
- 
+
+let python_highlight_all=1
+
 "开启语法高亮功能
 syntax enable
 syntax on
  
+
 "高亮搜索项
 set hlsearch
 
@@ -170,13 +174,24 @@ set laststatus=2
 set t_Co=256
 let g:Powline_symbols='fancy'
 
+"python with virtualenv support
+
+"py3 << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+"    project_base_dir = os.environ['VIRTUAL_ENV']
+"    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"    execfile(activate_this, dict(__file__=activate_this))
+"EOF
+
 
 
 " Enable folding  代码折叠
 set foldmethod=indent
 set foldlevel=99
 "Enable folding with the spacebar   error
-"nnoremap <space> za
+" nnoremap <space> za
 
 
 "-----------------------------python
@@ -193,6 +208,27 @@ endfunc
 autocmd BufNewFile * normal G
 "F2去空行
 nnoremap <F2> :g/^\s*$/d<CR>
+
+autocmd BufNewFile *.py
+            \ set tabstop=4
+            \ set softtabstop=4
+            \ set shiftwidth=4
+            \ set textwidth=79
+            \ set expandtab
+            \ set autoindent
+            \ set fileformat=unix
+
+
+
+" ------------------前端
+au BufNewFile,BufRead *.js, *.html, *.css
+            \ set tabstop=2
+            \ set softtabstop=2
+            \ set shiftwidth=2
+
+
+" --------------标出多余的空白字符
+" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 
 "************************************************************
@@ -258,10 +294,21 @@ Plugin 'mattn/emmet-vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/pylint.vim'
 
+
 "关于缩进
 Plugin 'tmhedberg/SimpylFold'
 
 Plugin 'Yggdroot/indentLine'
+
+" markdown 高亮 
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" markdown 实时预览
+Plugin 'suan/vim-instant-markdown'
+
+" python补全，跳转到引用
+Plugin 'davidhalter/jedi-vim'
 
 "Brief help of vundle
 
@@ -328,7 +375,7 @@ let NERDTreeAutoCenter=1
 let NERDTreeMouseMode=2
  
 "打开文件后自动关闭
-"let NERDTreeQuitOnOpen=1
+let NERDTreeQuitOnOpen=1
  
 "显示文件
 let NERDTreeShowFiles=1
@@ -346,7 +393,7 @@ let NERDTreeHightCursorline=1
 let NERDTreeWinPos='left'
  
 "窗口宽度
-let NERDTreeWinSize=21
+let NERDTreeWinSize=31
  
 "不显示'Bookmarks' label 'Press ? for help'
 let NERDTreeMinimalUI=1
@@ -386,7 +433,7 @@ let g:ycm_collect_identifiers_from_tag_files = 1
 
 "补全后自动关闭预览窗口"
 let g:ycm_autoclose_preview_window_after_completion=1
- 
+
 
 "是否在注释中也开启补全"
 let g:ycm_complete_in_comments=1
@@ -396,6 +443,7 @@ let g:ycm_complete_in_strings = 1
 
 "离开插入模式后自动关闭预览窗口"
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 
 
 "*****************************************************
@@ -476,7 +524,7 @@ let g:clojure_syntax_keywords = {
 
 "enable just for html/css
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,js EmmetInstall
 
 "enable in which mode
 let g:user_emmet_mode='n'    "only enable normal mode functions.
@@ -511,25 +559,6 @@ let g:indentLine_char = '|'
 
 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_active = 1 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
