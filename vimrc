@@ -308,7 +308,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
 
 " python补全，跳转到引用
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 
 "Brief help of vundle
 
