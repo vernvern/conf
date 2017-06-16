@@ -1,8 +1,9 @@
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" git clone https://github.com/kien/rainbow_parentheses.vim
-" git clone https://github.com/jpalardy/vim-slime
+" git clone https://github.com/kien/rainbow_parentheses.vim  " 彩虹括号
+" git clone https://github.com/jpalardy/vim-slime ~/.vim/bundle/Vundle.vim
 
-
+" marks
+" https://github.com/kshenoy/vim-signature.git ~/.vim/bundle/Vundle.vim 
 
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
 " the call to :runtime you can find below.  If you wish to change any of those
@@ -73,6 +74,8 @@ set nocompatible              " be iMproved, required
 set laststatus =2
 set cmdheight =2
 
+" 区分大小
+set noic
 
 "显示行号
 set number
@@ -166,7 +169,7 @@ highlight StatusLineNC guifg=Gray guibg=White
 
 
 "leader映射为
-let mapleader = "b"  
+let mapleader = "b"
 
 set background=dark
 
@@ -197,34 +200,23 @@ set foldlevel=99
 "-----------------------------python
 "根据文件类型自动插入文件头
 "autocmd BufNewFile *.py,*.sh exec ":call SetTitle()"
-autocmd BufNewFile *.py exec ":call SetTitle()"
-func SetTitle()
-call setline(1, "\#!/usr/bin/env python3")
-call append(line("."), "\# -*- coding:utf-8 -*-")
-call append(line(".")+1, "")
-call append(line(".")+2, "")
-endfunc 
+"autocmd BufNewFile *.py exec ":call SetTitle()"
+"func SetTitle()
+"call setline(1, "\#!/usr/bin/env python3")
+"call append(line("."), "\# -*- coding:utf-8 -*-")
+"call append(line(".")+1, "")
+"call append(line(".")+2, "")
+"endfunc 
+
 "新建文件后自动定位至文件末尾
 autocmd BufNewFile * normal G
+
 "F2去空行
 nnoremap <F2> :g/^\s*$/d<CR>
 
-autocmd BufNewFile *.py
-            \ set tabstop=4
-            \ set softtabstop=4
-            \ set shiftwidth=4
-            \ set textwidth=79
-            \ set expandtab
-            \ set autoindent
-            \ set fileformat=unix
+" 将ejs格式视为html格式
+au BufNewFile,BufRead *.ejs set filetype=html
 
-
-
-" ------------------前端
-au BufNewFile,BufRead *.js, *.html, *.css
-            \ set tabstop=2
-            \ set softtabstop=2
-            \ set shiftwidth=2
 
 
 " --------------标出多余的空白字符
@@ -292,12 +284,13 @@ Plugin 'mattn/emmet-vim'
 
 "python 语法检查 F7
 Plugin 'nvie/vim-flake8'
-Plugin 'vim-scripts/pylint.vim'
+"Plugin 'vim-scripts/pylint.vim'
 
 
 "关于缩进
-Plugin 'tmhedberg/SimpylFold'
+" Plugin 'tmhedberg/SimpylFold'
 
+" 代码块辅助线
 Plugin 'Yggdroot/indentLine'
 
 " markdown 高亮 
@@ -307,7 +300,10 @@ Plugin 'plasticboy/vim-markdown'
 " markdown 实时预览
 Plugin 'suan/vim-instant-markdown'
 
-" python补全，跳转到引用
+" 显示marks
+Plugin 'kshenoy/vim-signature'
+
+ " python补全，跳转到引用
 " Plugin 'davidhalter/jedi-vim'
 
 "Brief help of vundle
@@ -559,9 +555,6 @@ let g:indentLine_char = '|'
 
 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_active = 1 
-
-
-
 
 
 
