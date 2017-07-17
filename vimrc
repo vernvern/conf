@@ -288,7 +288,7 @@ Plugin 'nvie/vim-flake8'
 
 
 "关于缩进
-" Plugin 'tmhedberg/SimpylFold'
+Plugin 'tmhedberg/SimpylFold'
 
 " 代码块辅助线
 Plugin 'Yggdroot/indentLine'
@@ -305,6 +305,11 @@ Plugin 'kshenoy/vim-signature'
 
  " python补全，跳转到引用
 " Plugin 'davidhalter/jedi-vim'
+
+
+" 显示git的diff状态
+" https://github.com/airblade/vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
 
 "Brief help of vundle
 
@@ -555,6 +560,10 @@ let g:indentLine_char = '|'
 
 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_active = 1 
+
+"************************************************************
+"         airblade/vim-gitgutter  显示git的 diff            *
+"************************************************************
 
 
 
