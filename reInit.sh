@@ -6,31 +6,44 @@ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub  | sudo apt-key a
 apt update
 apt upgrade -y 
 
+# chrome
 apt install google-chrome-stable -y
-apt install cmake -y
-sudo apt-get install pylint pylint3 python-dev python3-dev -y
 
-apt install tmux -y
-apt install dpkg -y
 
-cp ~/conf/hosts  /etc/hosts
+# py
+apt-get install pylint pylint3 python-dev python3-dev -y
 mkdir ~/.pip
 cp ~/conf/pip.conf ~/.pip/
+
+
+apt install dpkg -y
+apt install cmake -y
+apt install tilda -y
+apt install vim -y
+apt install ctags -y
+apt install cmatrix -y
+
+
+
+# shadowsocks
+add-apt-repository ppa:hzwhuang/ss-qt5
+apt install shadowsocks-qt5
 
 #vim
 apt install vim -y
 ln -s ~/conf/vimrc  ~/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 mkdir ~/.vim/autoload
 #wget https://tpo.pe/pathogen.vim -p ~/vim/autoload/pathogen.vim
 git clone https://github.com/kien/rainbow_parentheses.vim ~/.vim/bundle/rainbow_parentheses.vim
 git clone https://github.com/jpalardy/vim-slime ~/.vim/bundle/vim-slime
 git clone https://github.com/guns/vim-clojure-static ~/.vim/bundle/vim-clojure-static
-p ~/conf/tmux.conf ~/.tmux.conf 
 
 
-
-
+# tmux
+apt install tmux -y
+cp ~/conf/tmux.conf ~/.tmux.conf 
 
 
 
