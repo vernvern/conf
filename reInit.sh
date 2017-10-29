@@ -16,14 +16,7 @@ mkdir ~/.pip
 cp ~/conf/pip.conf ~/.pip/
 
 
-apt install dpkg -y
-apt install cmake -y
-apt install tilda -y
-apt install vim -y
-apt install ctags -y
-apt install cmatrix -y
-
-
+apt install dpkg cmake tilda vim ctags cmatrix zsh fcitx-googlepinyin -y
 
 # shadowsocks
 add-apt-repository ppa:hzwhuang/ss-qt5
@@ -47,7 +40,10 @@ cp ~/conf/tmux.conf ~/.tmux.conf
 
 
 
-
+# zsh
+cd ~
+chsh -s /bin/zsh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 
 

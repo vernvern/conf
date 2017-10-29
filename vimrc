@@ -66,7 +66,7 @@ endif
 
 "-----------------------正常配置
 
-
+set pastetoggle=<F9>
 
 "去掉vi的一致性
 set nocompatible              " be iMproved, required
@@ -132,7 +132,7 @@ set backspace=indent,eol,start
 "set mouse=a
  
 "设置tab宽度
-set tabstop=4
+set tabstop=8
  
 "设置自动对齐空格数
 set shiftwidth=4
@@ -240,6 +240,9 @@ Plugin 'VundleVim/Vundle.vim'
 "优雅的在vim里使用git 
 "Plugin 'tpope/vim-fugitive'   
 
+" 显示git的diff状态
+" https://github.com/airblade/vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
 
 "优雅的跳转～
 Plugin 'Lokaltog/vim-easymotion'  
@@ -305,11 +308,6 @@ Plugin 'kshenoy/vim-signature'
 
  " python补全，跳转到引用
 " Plugin 'davidhalter/jedi-vim'
-
-
-" 显示git的diff状态
-" https://github.com/airblade/vim-gitgutter
-Plugin 'airblade/vim-gitgutter'
 
 "Brief help of vundle
 
@@ -563,6 +561,13 @@ let g:rainbow_active = 1
 
 "************************************************************
 "         airblade/vim-gitgutter  显示git的 diff            *
+"************************************************************
+
+
+
+
+"************************************************************
+"         instant-markdown  markdown插件                    *
 "************************************************************
 
 
