@@ -1,5 +1,4 @@
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" git clone https://github.com/kien/rainbow_parentheses.vim  " 彩虹括号
 " git clone https://github.com/jpalardy/vim-slime ~/.vim/bundle/Vundle.vim
 
 " marks
@@ -214,6 +213,13 @@ autocmd BufNewFile * normal G
 "F2去空行
 nnoremap <F2> :g/^\s*$/d<CR>
 
+" vimgrep输出到quickfix
+map ft :call Search_Word()<CR>:copen<CR>
+function Search_Word()
+let w = expand("<cword>") " 在当前光标位置抓词
+execute "vimgrep " . w . " *"
+endfunction
+
 " 将ejs格式视为html格式
 au BufNewFile,BufRead *.ejs set filetype=html
 
@@ -305,6 +311,8 @@ Plugin 'suan/vim-instant-markdown'
 
 " 显示marks
 Plugin 'kshenoy/vim-signature'
+
+Plugin 'ctrlpvim/ctrlp.vim'
 
  " python补全，跳转到引用
 " Plugin 'davidhalter/jedi-vim'
@@ -415,7 +423,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
 "*****************************************************
  
 "使用python3编译
-let g:ycm_path_to_python_interpreter="/usr/bin/python3"
+let g:ycm_path_to_python_interpreter="/usr/bin/python"
+
+let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 
 "配置默认的ycm_extra_conf.py
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py' 
@@ -478,6 +488,8 @@ let g:EasyMotion_leader_key='<Space>'
 "                           slimv                           *
 "************************************************************
 
+set runtimepath+=~/.dotfiles/vim/autoload
+source ~/.vim/autoload/pathogen.vim
 execute pathogen#infect()
 syntax enable
 set number
