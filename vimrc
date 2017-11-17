@@ -292,7 +292,10 @@ Plugin 'mattn/emmet-vim'
 
 
 "python 语法检查 F7
-Plugin 'nvie/vim-flake8'
+" Plugin 'nvie/vim-flake8'
+
+"python 语法检查 
+Plugin 'andviro/flake8-vim'
 "Plugin 'vim-scripts/pylint.vim'
 
 
@@ -583,5 +586,29 @@ let g:rainbow_active = 1
 "************************************************************
 
 
+"************************************************************
+"                  andviro/flake8-vim                       *
+"   github:  https://github.com/andviro/flake8-vim          *
+"************************************************************
 
+" Auto-check file for errors on write:
+let g:PyFlakeOnWrite = 0
+
+" List of checkers used:
+let g:PyFlakeCheckers = 'pep8'
+
+" List of disabled pep8 warnings and errors:
+" let g:PyFlakeDisabledMessages = 'E501'
+
+" Default maximum complexity for mccabe:
+" let g:PyFlakeDefaultComplexity=10
+
+" Default height of quickfix window:
+let g:PyFlakeCWindow = 6 
+
+" Force python 3 interface:
+" let g:PyFlakeForcePyVersion = 3
+
+" Default aggressiveness for autopep8:
+" let g:PyFlakeAggressive = 1
 
