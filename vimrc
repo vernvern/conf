@@ -277,7 +277,7 @@ Plugin 'Lokaltog/vim-powerline'
 "自动补全三剑客
 Plugin 'Valloric/YouCompleteMe'  
 Plugin 'Valloric/ListToggle'
-Plugin 'syntastic'                 "语法检查
+" Plugin 'syntastic'                 "语法检查
 
 
 "传递路径，合理设置运行时路径。 
@@ -295,9 +295,8 @@ Plugin 'mattn/emmet-vim'
 " Plugin 'nvie/vim-flake8'
 
 "python 语法检查 
-Plugin 'andviro/flake8-vim'
+" Plugin 'andviro/flake8-vim'
 "Plugin 'vim-scripts/pylint.vim'
-
 
 "关于缩进
 Plugin 'tmhedberg/SimpylFold'
@@ -315,7 +314,7 @@ Plugin 'suan/vim-instant-markdown'
 " 显示marks
 Plugin 'kshenoy/vim-signature'
 
-Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
 
  " python补全，跳转到引用
 " Plugin 'davidhalter/jedi-vim'
@@ -586,29 +585,4 @@ let g:rainbow_active = 1
 "************************************************************
 
 
-"************************************************************
-"                  andviro/flake8-vim                       *
-"   github:  https://github.com/andviro/flake8-vim          *
-"************************************************************
-
-" Auto-check file for errors on write:
-let g:PyFlakeOnWrite = 0
-
-" List of checkers used:
-let g:PyFlakeCheckers = 'pep8'
-
-" List of disabled pep8 warnings and errors:
-" let g:PyFlakeDisabledMessages = 'E501'
-
-" Default maximum complexity for mccabe:
-" let g:PyFlakeDefaultComplexity=10
-
-" Default height of quickfix window:
-let g:PyFlakeCWindow = 6 
-
-" Force python 3 interface:
-" let g:PyFlakeForcePyVersion = 3
-
-" Default aggressiveness for autopep8:
-" let g:PyFlakeAggressive = 1
 
