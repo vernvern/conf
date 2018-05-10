@@ -10,7 +10,6 @@
 
 "-----------------------正常配置
 
-set pastetoggle=<F9>
 
 "去掉vi的一致性
 set nocompatible              " be iMproved, required
@@ -20,9 +19,11 @@ set cmdheight=2
 
 " 区分大小
 set noic
+"设置搜索时忽略大小写
+" set ignorecase
 
 "显示行号
-set number
+" set number
 
 "设置在编辑过程中右下角显示光标的行列信息
 set ruler
@@ -49,10 +50,12 @@ set encoding=utf-8
 "自动判断编码时 依次尝试以下编码
 set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-"设置C/C++方式自动对齐
+"设置自动缩进
 " set autoindent
 " set cindent
 
+" paste 模式开关
+set pastetoggle=<F3>
 
 " "开启语法高亮功能
 syntax enable
@@ -71,9 +74,6 @@ set hlsearch
 "指定配色方案为256色
 set t_Co=256
 
-"设置搜索时忽略大小写
-" set ignorecase
-
 "配置backspace的工作方式
 set backspace=indent,eol,start
 
@@ -82,17 +82,16 @@ set backspace=indent,eol,start
 
 "设置tab宽度
 set tabstop=4
-"
+
 " "设置自动对齐空格数
 set shiftwidth=4
-"
+
 "设置退格键时可以删除4个空格
 set smarttab
 set softtabstop=4
 set shiftwidth=4
 "将tab键自动转换为空格
 set expandtab
-
 
 "检测文件类型
 filetype on
@@ -106,11 +105,9 @@ filetype plugin on
 "启动智能补全
 "filetype plugin indent on
 
-
 " 状态行颜色
 highlight StatusLine guifg=SlateBlue guibg=Yellow
 highlight StatusLineNC guifg=Gray guibg=White
-
 
 "leader映射为
 let mapleader = "b"
@@ -139,8 +136,12 @@ set foldlevel=99
 " nnoremap <space> za
 
 " 标出多余空格
+autocmd BufNewFile,BufRead *.py exec ":call Highlight_py_space()"
+func Highlight_py_space()
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+endfunc
+
 
 "新建文件后自动定位至文件末尾
 autocmd BufNewFile * normal G
@@ -148,10 +149,18 @@ autocmd BufNewFile * normal G
 "F2去空行
 nnoremap <F2> :g/^\s*$/d<CR>
 
+" 自动重载
+" set autoread
+
+" 将ejs格式视为html格式
+au BufNewFile,BufRead *.ejs set filetype=html
+" 将tag格式视为html格式
+au BufNewFile,BufRead *.tag set filetype=html
 
 "************************************************************
 "                   python
 "************************************************************
+"
 "根据文件类型自动插入文件头
 autocmd BufNewFile *.py exec ":call SetTitle()"
 autocmd BufNewFile *.py exec ":call SetTitle()"
@@ -167,8 +176,6 @@ let w = expand("<cword>") " 在当前光标位置抓词
 execute "vimgrep " . w . " *"
  endfunction
 
-" 将ejs格式视为html格式
-au BufNewFile,BufRead *.ejs set filetype=html
 
 "************************************************************
 "         vundle
@@ -193,14 +200,11 @@ Plugin 'airblade/vim-gitgutter'
 "优雅的跳转～
 Plugin 'Lokaltog/vim-easymotion'
 
-
 "显示当前文件中的宏、全局变量、函数等
 Plugin 'taglist.vim'
 
-
 "树形的文件系统浏览器
 Plugin 'The-NERD-tree'
-
 
 "彩虹括号
 "Plugin 'kien/rainbow_parentheses.vim'
@@ -213,30 +217,16 @@ Plugin 'luochen1990/rainbow'
 "很美观实用的状态栏
 Plugin 'Lokaltog/vim-powerline'
 
-
 "自动补全三剑客
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'Valloric/ListToggle'
 " Plugin 'syntastic'                 "语法检查
 
-
 "传递路径，合理设置运行时路径。
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-
-"界面UI   ??不成功
-"Plugin 'altercation/vim-color-solarized'
-
 "html
 Plugin 'mattn/emmet-vim'
-
-
-"python 语法检查 F7
-" Plugin 'nvie/vim-flake8'
-
-"python 语法检查
-" Plugin 'andviro/flake8-vim'
-"Plugin 'vim-scripts/pylint.vim'
 
 "关于缩进
 Plugin 'tmhedberg/SimpylFold'
@@ -249,19 +239,20 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
 " markdown 实时预览
-" Plugin 'suan/vim-instant-markdown'
+ Plugin 'suan/vim-instant-markdown'
 
 " 显示marks
 Plugin 'kshenoy/vim-signature'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 
- " python补全，跳转到引用
-" Plugin 'davidhalter/jedi-vim'
+" 查找代码
+Plugin 'mileszs/ack.vim'
+
+" github 文档目录
+Plugin 'mzlogin/vim-markdown-toc'
 
 "Brief help of vundle
-
-
 "    :BundleList -列举出列表中(.vimrc中)配置的所有插件
 "    :BundleInstall -安装列表中全部插件
 "    :BundleInstall! -更新列表中全部插件
@@ -272,6 +263,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 "End brief vundle
 call vundle#end()
 filetype plugin indent on
+
 
 "****************************************************************
 
@@ -418,7 +410,7 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 "************************************************************
 "         Lokaltog/vim-easymotion  跳转                     *
 "************************************************************
-let g:EasyMotion_leader_key='<Space>'
+let g:EasyMotion_leader_key='f'
 
 
 
@@ -434,8 +426,6 @@ set runtimepath+=~/.dotfiles/vim/autoload
 source ~/.vim/autoload/pathogen.vim
 execute pathogen#infect()
 syntax enable
-set number
-set autoindent
 filetype plugin indent on
 
 " vim-slime  options
@@ -496,14 +486,14 @@ let g:SimpylFold_docstring_preview=1
 "                    indentLine    缩进指示线               *
 "************************************************************
 
-"开关，1开0关
-let g:indentLine_setColors = 1
+" 开关，1开0关
+" let g:indentLine_setColors = 0
 
 " Vim
-let g:indentLine_color_term = 150
+" let g:indentLine_color_term = 150
 
 "指示线符号   ¦  ┆  │
-let g:indentLine_char = '|'
+" let g:indentLine_char = '|'
 
 
 "************************************************************
@@ -525,3 +515,9 @@ let g:rainbow_active = 1
 "************************************************************
 
 
+
+"************************************************************
+"         mileszs/ack.vim  代码查找                         *
+"************************************************************
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
