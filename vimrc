@@ -82,14 +82,16 @@ set backspace=indent,eol,start
 
 "设置tab宽度
 set tabstop=4
+au BufNewFile,BufRead *.dart set tabstop=2
 
-" "设置自动对齐空格数
+"设置自动对齐空格数
 set shiftwidth=4
+au BufNewFile,BufRead *.dart set shiftwidth=2
+set softtabstop=4
+au BufNewFile,BufRead *.dart set softtabstop=2
 
 "设置退格键时可以删除4个空格
 set smarttab
-set softtabstop=4
-set shiftwidth=4
 "将tab键自动转换为空格
 set expandtab
 
@@ -239,7 +241,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
 " markdown 实时预览
- Plugin 'suan/vim-instant-markdown'
+" Plugin 'suan/vim-instant-markdown'
 
 " 显示marks
 Plugin 'kshenoy/vim-signature'
@@ -251,6 +253,9 @@ Plugin 'mileszs/ack.vim'
 
 " github 文档目录
 Plugin 'mzlogin/vim-markdown-toc'
+
+" dart
+Plugin 'dart-lang/dart-vim-plugin'
 
 "Brief help of vundle
 "    :BundleList -列举出列表中(.vimrc中)配置的所有插件
@@ -357,7 +362,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
 "*****************************************************
 
 "使用python3编译
-let g:ycm_path_to_python_interpreter="/usr/bin/python"
+let g:ycm_path_to_python_interpreter="/usr/local/bin/python3"
 
 let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 
@@ -393,6 +398,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 "          Syntastic配置    用于语法检查             *
 "*****************************************************
 
+
 let g:Syntastic_check_on_open=1
 
 let g:syntastic_error_symbol='✗'
@@ -401,21 +407,21 @@ let g:syntastic_python_python_exe = 'python3'
 "禁止syntatic 对python 的检查
 let g:syntastic_ignore_files=[".*\.py$"]
 
+
 "************************************************************
 "         rainbow  彩虹括号                                 *
 "************************************************************
+
+
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 
 "************************************************************
 "         Lokaltog/vim-easymotion  跳转                     *
 "************************************************************
+
+
 let g:EasyMotion_leader_key='f'
-
-
-
-
-
 
 
 "************************************************************
@@ -463,16 +469,18 @@ let g:clojure_syntax_keywords = {
 "************************************************************
 
 "suger~
-"let g:uesr_emmet_leader_key='C-k'
+" let g:uesr_emmet_leader_key='<C-X>'
+let g:user_emmet_leader_key='<c-y>'
+
 
 "enable just for html/css
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,js EmmetInstall
 
 "enable in which mode
-let g:user_emmet_mode='n'    "only enable normal mode functions.
-"let g:user_emmet_mode='inv'  "enable all functions, which is equal to
-"let g:user_emmet_mode='a'    "enable all function in all mode.
+" let g:user_emmet_mode='n'    "only enable normal mode functions.
+" let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode.
 
 "************************************************************
 "                    tmhedberg/SimpylFold   代码缩进        *
@@ -486,7 +494,7 @@ let g:SimpylFold_docstring_preview=1
 "                    indentLine    缩进指示线               *
 "************************************************************
 
-" 开关，1开0关
+" 颜色开关，1开0关
 " let g:indentLine_setColors = 0
 
 " Vim
@@ -507,7 +515,8 @@ let g:rainbow_active = 1
 "         airblade/vim-gitgutter  显示git的 diff            *
 "************************************************************
 
-
+" updated when save
+autocmd BufWritePost * GitGutter
 
 
 "************************************************************
@@ -515,9 +524,18 @@ let g:rainbow_active = 1
 "************************************************************
 
 
-
 "************************************************************
 "         mileszs/ack.vim  代码查找                         *
 "************************************************************
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+
+"************************************************************
+"         dart-vim-plugin                                   *
+"************************************************************
+
+let g:ycm_dart_bin_folder_path = '/Users/vernli/flutter/flutter/bin'
+
+" Enable DartFmt execution on buffer save with 1
+let dart_format_on_save = 1
