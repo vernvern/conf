@@ -368,7 +368,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeT
 "*****************************************************
 
 "使用python3编译
-let g:ycm_path_to_python_interpreter="/usr/local/bin/python3"
+let g:ycm_path_to_python_interpreter="/usr/bin/python3"
 
 let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 
@@ -377,6 +377,10 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 
 "按,jd 会跳转到定义
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+let g:ycm_semantic_triggers = {
+    \ 'python': ['re!\w{2}'],
+    \ }
 
 "打开vim时不再询问是否加载ycm_extra_conf.py配置
 let g:ycm_confirm_extra_conf=0
@@ -428,46 +432,6 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 
 let g:EasyMotion_leader_key='f'
-
-
-"************************************************************
-"                           slimv                           *
-"************************************************************
-
-set runtimepath+=~/.dotfiles/vim/autoload
-source ~/.vim/autoload/pathogen.vim
-execute pathogen#infect()
-syntax enable
-filetype plugin indent on
-
-" vim-slime  options
-" Clojure options.
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
-
-" rainbow_parentheses options
-autocmd Syntax clojure RainbowParenthesesLoadRound
-autocmd BufEnter *.clj RainbowParenthesesToggle
-autocmd BufLeave *.clj RainbowParenthesesToggle
-
-let g:rbpt_colorpairs = [
-    \ ['magenta',     'purple1'],
-    \ ['cyan',        'magenta1'],
-    \ ['green',       'slateblue1'],
-    \ ['yellow',      'cyan1'],
-    \ ['red',         'springgreen1'],
-    \ ['magenta',     'green1'],
-    \ ['cyan',        'greenyellow'],
-    \ ['green',       'yellow1'],
-    \ ['yellow',      'orange1'],
-    \ ]
-let g:rbpt_max =9
-
-" vim-clojure-static options
-let g:clojure_syntax_keywords = {
-    \ 'clojureMacro': ["defproject", "defcustom"],
-    \ 'clojureFunc': ["string/join", "string/replace"]
-    \ }
 
 
 "************************************************************
