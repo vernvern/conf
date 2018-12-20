@@ -382,30 +382,37 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 "按,jd 会跳转到定义
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+" 触发语义补全的正则
 let g:ycm_semantic_triggers = {
-    \ 'python': ['re!\w{2}'],
+    \ "c,cpp,python,java,go,erlang,perl": ['re!\w{2}'],
+    \ "cs,lua,javascript": ['re!\w{2}'],
     \ }
 
-"打开vim时不再询问是否加载ycm_extra_conf.py配置
+" 关闭函数原型预览
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+
+" 打开vim时不再询问是否加载ycm_extra_conf.py配置
 let g:ycm_confirm_extra_conf=0
 
-"使用ctags生成的tags文件
+" 使用ctags生成的tags文件
 let g:ycm_collect_identifiers_from_tag_files = 1
 
+" 补全框颜色
+highlight PMenu ctermfg=0 ctermbg=73 guifg=black guibg=CadetBlue
+highlight PMenuSel ctermfg=0 ctermbg=6 guifg=CadetBlue guibg=Teal
 
-"补全后自动关闭预览窗口"
+" 补全后自动关闭预览窗口
 let g:ycm_autoclose_preview_window_after_completion=1
 
-
-"是否在注释中也开启补全"
+" 是否在注释中也开启补全
 let g:ycm_complete_in_comments=1
 
-"字符串中也开启补全"
+" 字符串中也开启补全
 let g:ycm_complete_in_strings = 1
 
-"离开插入模式后自动关闭预览窗口"
+" 离开插入模式后自动关闭预览窗口
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
 
 
 "*****************************************************
