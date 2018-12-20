@@ -84,14 +84,17 @@ set backspace=indent,eol,start
 set tabstop=4
 au BufNewFile,BufRead *.dart set tabstop=2
 au BufNewFile,BufRead *.yml set tabstop=2
+au BufNewFile,BufRead *.js set tabstop=2
 
 "设置自动对齐空格数
 set shiftwidth=4
 au BufNewFile,BufRead *.dart set shiftwidth=2
 au BufNewFile,BufRead *.yml set shiftwidth=2
+au BufNewFile,BufRead *.js set shiftwidth=2
 set softtabstop=4
 au BufNewFile,BufRead *.dart set softtabstop=2
 au BufNewFile,BufRead *.yml set softtabstop=2
+au BufNewFile,BufRead *.js set softtabstop=2
 
 "设置退格键时可以删除4个空格
 set smarttab
@@ -141,7 +144,8 @@ set foldlevel=99
 " nnoremap <space> za
 
 " 标出多余空格
-autocmd BufNewFile,BufRead *.py exec ":call Highlight_py_space()"
+" autocmd BufNewFile,BufRead *.py exec ":call Highlight_py_space()"
+autocmd BufNewFile,BufRead * exec ":call Highlight_py_space()"
 func Highlight_py_space()
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
