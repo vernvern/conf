@@ -385,7 +385,7 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " 触发语义补全的正则
 let g:ycm_semantic_triggers = {
     \ "c,cpp,python,java,go,erlang,perl": ['re!\w{2}'],
-    \ "cs,lua,javascript": ['re!\w{2}'],
+    \ "cs,lua,javascript,dart": ['re!\w{2}'],
     \ }
 
 " 关闭函数原型预览
@@ -517,7 +517,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 "         dart-vim-plugin                                   *
 "************************************************************
 
-let g:ycm_dart_bin_folder_path = '/Users/vernli/flutter/flutter/bin'
+let g:ycm_dart_bin_folder_path = '/home/jianhongjianhong2/flutter/bin/cache/dart-sdk/bin'
 
 " Enable DartFmt execution on buffer save with 1
 let dart_format_on_save = 1
