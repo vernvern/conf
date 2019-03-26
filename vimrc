@@ -256,7 +256,7 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " 查找代码
-Plugin 'mileszs/ack.vim'
+Plugin 'Yggdroot/LeaderF'
 
 " github 文档目录
 Plugin 'mzlogin/vim-markdown-toc'
@@ -265,7 +265,7 @@ Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'dart-lang/dart-vim-plugin'
 
 " dash
-Plugin 'rizzatti/dash.vim'
+" Plugin 'rizzatti/dash.vim'
 
 "Brief help of vundle
 "    :BundleList -列举出列表中(.vimrc中)配置的所有插件
@@ -510,7 +510,7 @@ let g:gitgutter_max_signs = 1000
 "         mileszs/ack.vim  代码查找                         *
 "************************************************************
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ackprg = 'rg'
 
 
 "************************************************************
