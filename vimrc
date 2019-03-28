@@ -148,7 +148,10 @@ set foldlevel=99
 autocmd BufNewFile,BufRead * exec ":call Highlight_py_space()"
 func Highlight_py_space()
 highlight RedundantSpaces ctermbg=red guibg=red
-match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+" 结尾空格 & 制表符tab
+" match RedundantSpaces /\s\+$\| \+\ze\t\|\t/
+" 结尾空格
+match RedundantSpaces /\s\+$/
 endfunc
 
 
