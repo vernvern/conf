@@ -256,10 +256,10 @@ Plugin 'plasticboy/vim-markdown'
 " 显示marks
 Plugin 'kshenoy/vim-signature'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-
 " 查找代码
 Plugin 'Yggdroot/LeaderF'
+" replace by leaderF
+" Plugin 'ctrlpvim/ctrlp.vim'
 
 " github 文档目录
 Plugin 'mzlogin/vim-markdown-toc'
@@ -524,3 +524,11 @@ let g:ycm_dart_bin_folder_path = '/home/jianhongjianhong2/flutter/bin/cache/dart
 
 " Enable DartFmt execution on buffer save with 1
 let dart_format_on_save = 1
+
+
+
+"************************************************************
+"         dart-vim-plugin                                   *
+"************************************************************
+
+let g:Lf_ShortcutF = '<C-P>'
