@@ -84,17 +84,23 @@ set backspace=indent,eol,start
 set tabstop=4
 au BufNewFile,BufRead *.dart set tabstop=2
 au BufNewFile,BufRead *.yml set tabstop=2
+au BufNewFile,BufRead *.yaml set tabstop=2
 au BufNewFile,BufRead *.js set tabstop=2
+au BufNewFile,BufRead *.html set tabstop=2
 
 "设置自动对齐空格数
 set shiftwidth=4
 au BufNewFile,BufRead *.dart set shiftwidth=2
 au BufNewFile,BufRead *.yml set shiftwidth=2
+au BufNewFile,BufRead *.yaml set shiftwidth=2
 au BufNewFile,BufRead *.js set shiftwidth=2
+au BufNewFile,BufRead *.html set shiftwidth=2
 set softtabstop=4
 au BufNewFile,BufRead *.dart set softtabstop=2
 au BufNewFile,BufRead *.yml set softtabstop=2
+au BufNewFile,BufRead *.yaml set softtabstop=2
 au BufNewFile,BufRead *.js set softtabstop=2
+au BufNewFile,BufRead *.html set softtabstop=2
 
 "设置退格键时可以删除4个空格
 set smarttab
@@ -255,9 +261,6 @@ Plugin 'kshenoy/vim-signature'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 
-" 查找代码
-Plugin 'mileszs/ack.vim'
-
 " github 文档目录
 Plugin 'mzlogin/vim-markdown-toc'
 
@@ -265,7 +268,7 @@ Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'dart-lang/dart-vim-plugin'
 
 " dash
-Plugin 'rizzatti/dash.vim'
+" Plugin 'rizzatti/dash.vim'
 
 "Brief help of vundle
 "    :BundleList -列举出列表中(.vimrc中)配置的所有插件
