@@ -1,10 +1,17 @@
-hosts --->   /etc/hosts
-------
-vimrc   ------ > ~/.vimrc
+vimrc   ------> ~/.vimrc
+
 --------
-pip.conf  ----------- >  ~/.pip/pip.conf
+
+pip.conf  ----------->  ~/.pip/pip.conf
+
 ------------
 
-cmdoptions.py ---------- >    usr/local/lib/python3.5/dist-packages/pip/
----------
 tmux.conf ----------->  ~/.tmux.conf
+
+----
+
+jupyter.service -----> /usr/lib/systemd/system/jupyter.service  # debian 9
+
+----
+
+zshrc ---> ~/.zshrc
