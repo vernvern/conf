@@ -60,6 +60,8 @@ set pastetoggle=<F3>
 syntax enable
 syntax on
 
+" stop beep
+set visualbell
 
 "高亮搜索项
 set hlsearch
