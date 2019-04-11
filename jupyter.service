@@ -1,0 +1,13 @@
+[Unit]
+Description=Jupyter
+
+[Service]
+Type=simple
+PIDFile=/var/run/jupyter.pid
+ExecStart=/usr/local/bin/jupyter notebook --port=2333 --ip=0.0.0.0 --no-browser
+WorkingDirectory=/home/jianhongjianhong2
+User=jianhongjianhong2
+Group=jianhongjianhong2
+
+[Install]
+WantedBy=multi-user.target
