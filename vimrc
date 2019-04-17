@@ -86,22 +86,22 @@ set tabstop=4
 au BufNewFile,BufRead *.dart set tabstop=2
 au BufNewFile,BufRead *.yml set tabstop=2
 au BufNewFile,BufRead *.yaml set tabstop=2
-au BufNewFile,BufRead *.js set tabstop=2
-au BufNewFile,BufRead *.html set tabstop=2
+au BufNewFile,BufRead *.js set tabstop=4
+au BufNewFile,BufRead *.html set tabstop=4
 
 "设置自动对齐空格数
 set shiftwidth=4
 au BufNewFile,BufRead *.dart set shiftwidth=2
 au BufNewFile,BufRead *.yml set shiftwidth=2
 au BufNewFile,BufRead *.yaml set shiftwidth=2
-au BufNewFile,BufRead *.js set shiftwidth=2
-au BufNewFile,BufRead *.html set shiftwidth=2
+au BufNewFile,BufRead *.js set shiftwidth=4
+au BufNewFile,BufRead *.html set shiftwidth=4
 set softtabstop=4
 au BufNewFile,BufRead *.dart set softtabstop=2
 au BufNewFile,BufRead *.yml set softtabstop=2
 au BufNewFile,BufRead *.yaml set softtabstop=2
-au BufNewFile,BufRead *.js set softtabstop=2
-au BufNewFile,BufRead *.html set softtabstop=2
+au BufNewFile,BufRead *.js set softtabstop=4
+au BufNewFile,BufRead *.html set softtabstop=4
 
 "设置退格键时可以删除4个空格
 set smarttab
