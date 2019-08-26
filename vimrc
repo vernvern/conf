@@ -120,6 +120,9 @@ filetype plugin on
 "启动智能补全
 "filetype plugin indent on
 
+" 文件类型
+" set fileformat=unix
+
 " 状态行颜色
 highlight StatusLine guifg=SlateBlue guibg=Yellow
 highlight StatusLineNC guifg=Gray guibg=White
@@ -171,6 +174,19 @@ nnoremap <F2> :g/^\s*$/d<CR>
 " 自动重载
 " set autoread
 
+
+"************************************************************
+"                   cpp
+"************************************************************
+
+au BufNewFile,BufRead *.cpp nnoremap <F5>:!g++ -std=c++11 % -o /tmp/a.out && /tmp/a.out<CR>
+au BufNewFile,BufRead *.cpp nnoremap <C-F5>:!g++ -std=c++11 -g % -o /tmp/a.out && gdb /tmp/a.out<CR>
+
+
+"************************************************************
+"                   js
+"************************************************************
+
 " 将ejs格式视为html格式
 au BufNewFile,BufRead *.ejs set filetype=html
 " 将tag格式视为html格式
@@ -220,7 +236,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'Lokaltog/vim-easymotion'
 
 "显示当前文件中的宏、全局变量、函数等
-Plugin 'taglist.vim'
+" Plugin 'taglist.vim'
 
 "树形的文件系统浏览器
 Plugin 'The-NERD-tree'
@@ -247,8 +263,8 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "html
 Plugin 'mattn/emmet-vim'
 
-"关于缩进
-Plugin 'tmhedberg/SimpylFold'
+"关于python缩进
+" Plugin 'tmhedberg/SimpylFold'
 
 " 代码块辅助线
 Plugin 'Yggdroot/indentLine'
@@ -273,6 +289,10 @@ Plugin 'mzlogin/vim-markdown-toc'
 
 " dart
 Plugin 'dart-lang/dart-vim-plugin'
+
+" command mode: GV, show git commit tree
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'junegunn/gv.vim'
 
 " dash
 " Plugin 'rizzatti/dash.vim'
@@ -453,6 +473,12 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 
 let g:EasyMotion_leader_key='f'
+
+" 替换vim的 /
+" map  / <Plug>(easymotion-sn)
+" omap / <Plug>(easymotion-tn)
+
+nmap <Leader>f <Plug>(easymotion-overwin-f2)
 
 
 "************************************************************
