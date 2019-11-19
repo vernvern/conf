@@ -9,6 +9,9 @@
 
 "-----------------------正常配置
 
+" 生成索引文件，用于跳转
+" apt install exuberant-ctags
+nmap <F9> :!ctags -R .<CR>
 
 "去掉vi的一致性
 set nocompatible              " be iMproved, required
@@ -253,9 +256,11 @@ Plugin 'luochen1990/rainbow'
 Plugin 'Lokaltog/vim-powerline'
 
 "自动补全三剑客
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Valloric/ListToggle'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/ListToggle'
 " Plugin 'syntastic'                 "语法检查
+"
+Plugin 'zxqfl/tabnine-vim'
 
 "传递路径，合理设置运行时路径。
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -543,13 +548,6 @@ let g:gitgutter_max_signs = 1000
 
 
 "************************************************************
-"         mileszs/ack.vim  代码查找                         *
-"************************************************************
-
-let g:ackprg = 'rg'
-
-
-"************************************************************
 "         dart-vim-plugin                                   *
 "************************************************************
 
@@ -561,7 +559,15 @@ let dart_format_on_save = 1
 
 
 "************************************************************
-"         dart-vim-plugin                                   *
+"              leaderF                                      *
 "************************************************************
 
 let g:Lf_ShortcutF = '<C-P>'
+
+
+"************************************************************
+"              tabnine                                      *
+"************************************************************
+
+
+nmap <S-F> :Leaderf rg<CR>
