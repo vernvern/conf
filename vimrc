@@ -25,13 +25,16 @@ Plug 'preservim/nerdcommenter'
 " markdown 实时查看
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
+" 竖线
+Plug 'Yggdroot/indentLine'
+
 call plug#end()
 
 " 指定默认python3路径
 " let g:python3_host_prog="/usr/local/opt/python@3.8/bin/python3"
 
 "去掉vi的一致性
-set nocompatible              " be iMproved, required
+set nocompatible
 
 "设置取消备份 禁止临时文件的生成
 set nobackup
@@ -43,6 +46,17 @@ set showmatch
 "文件编码
 set fenc=utf-8
 
+"突出显示当前列
+" set cursorcolumn
+
+"突出显示当前行
+set cursorline
+
+" stop beep
+set visualbell
+
+set background=dark
+
 "设置编码方式
 set encoding=utf-8
 
@@ -53,7 +67,7 @@ set t_Co=256
 set hlsearch
 
 "自动判断编码时 依次尝试以下编码
-set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencodings=utf-8,gb18030,big5,latin1
 
 " paste 模式开关
 set pastetoggle=<F3>
@@ -155,8 +169,7 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 "          'Yggdroot/LeaderF'                               *
 "************************************************************
 
-" let g:Lf_ShortcutF = '<C-P>'
-
+" let g:Lf_ShortcutF = '<C-P>' 
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
