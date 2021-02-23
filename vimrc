@@ -26,7 +26,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 " 竖线
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -169,20 +169,27 @@ let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 "          'Yggdroot/LeaderF'                               *
 "************************************************************
 
-" let g:Lf_ShortcutF = '<C-P>' 
+let g:Lf_ShortcutF = '<C-P>'
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
+
 " popup mode
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-let g:Lf_ShortcutF = '<C-P>'
 
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e ")<CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+let g:Lf_ShowDevIcons = 1
 
 "************************************************************
 "              coc-nvim                                     *
