@@ -25,6 +25,12 @@ Plug 'preservim/nerdcommenter'
 " markdown 实时查看
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
+" 多个高亮搜索项
+Plug 'lfv89/vim-interestingwords'
+
+" 显示标记
+Plug 'kshenoy/vim-signature'
+
 " 竖线
 " Plug 'Yggdroot/indentLine'
 
@@ -32,6 +38,8 @@ call plug#end()
 
 " 指定默认python3路径
 " let g:python3_host_prog="/usr/local/opt/python@3.8/bin/python3"
+
+let mapleader=","
 
 "去掉vi的一致性
 set nocompatible
@@ -177,7 +185,7 @@ let g:Lf_UseVersionControlTool = 0
 let g:Lf_IgnoreCurrentBufferName = 1
 
 " popup mode
-let g:Lf_WindowPosition = 'popup'
+" let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
@@ -333,4 +341,17 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
+
+"************************************************************
+"              lfv89/vim-interestingwords                   *
+"************************************************************
+
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+vnoremap <silent> <leader>k :call InterestingWords('v')<cr>
+nnoremap <silent> <leader>k :call UncolorAllWords()<cr>
+
+nnoremap <silent> n :call WordNavigation(1)<cr>
+nnoremap <silent> N :call WordNavigation(0)<cr>
 
