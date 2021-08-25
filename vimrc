@@ -8,8 +8,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
-" git 状态栏
-Plug 'airblade/vim-gitgutter'
+" git 状态栏 Plug 'airblade/vim-gitgutter'
 
 "彩虹括号
 "Plug 'kien/rainbow_parentheses.vim'
@@ -32,7 +31,10 @@ Plug 'lfv89/vim-interestingwords'
 Plug 'kshenoy/vim-signature'
 
 " 竖线
-" Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
+
+" 格式化代码工具
+Plug 'chiel92/vim-autoformat'
 
 call plug#end()
 
@@ -56,6 +58,9 @@ set fenc=utf-8
 
 "突出显示当前列
 " set cursorcolumn
+
+" 竖线
+" set list lcs=tab:\¦\ 
 
 "突出显示当前行
 set cursorline
@@ -111,8 +116,9 @@ au BufNewFile,BufRead *.html set softtabstop=4
 
 "设置退格键时可以删除4个空格
 set smarttab
+
 "将tab键自动转换为空格
-au BufNewFile,BufRead *.py set expandtab
+set expandtab
 
 "检测文件类型
 filetype on
@@ -191,11 +197,11 @@ let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu S
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
 
-noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+" noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e ")<CR>
 " search visually selected text literally
-xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-noremap go :<C-U>Leaderf! rg --recall<CR>
+" xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+" noremap go :<C-U>Leaderf! rg --recall<CR>
 
 let g:Lf_ShowDevIcons = 1
 
@@ -355,3 +361,21 @@ nnoremap <silent> <leader>k :call UncolorAllWords()<cr>
 nnoremap <silent> n :call WordNavigation(1)<cr>
 nnoremap <silent> N :call WordNavigation(0)<cr>
 
+
+"************************************************************
+"                  'Yggdroot/indentLine'                    *
+"************************************************************
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+
+
+"************************************************************
+"                chiel92/vim-autoformat'                    *
+"************************************************************
+
+let g:formatdef_my_clang = '"clang-format"'
+let g:formatters_cpp = ['my_clang']
+let g:formatters_c = ['my_clang']
+noremap <F9> :Autoformat<cr>
+" autocmd BufWritePre *.cpp,*.h  Autoformat  "  保存时触发
