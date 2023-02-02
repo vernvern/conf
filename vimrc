@@ -1,9 +1,11 @@
 set shell=/bin/sh
 
+" nvim config path:    ~/.config/nvim/init.vim
+
 
 " https://github.com/junegunn/vim-plug
 " PlugInstall PlugClean PlugStatus PlugUpdate PlugUpgrade
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
