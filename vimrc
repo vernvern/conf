@@ -1,5 +1,6 @@
 set shell=/bin/sh
 
+set mouse="" " 禁止鼠标
 
 " https://github.com/junegunn/vim-plug
 " PlugInstall PlugClean PlugStatus PlugUpdate PlugUpgrade
