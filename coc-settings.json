@@ -1,4 +1,6 @@
 {
+    "suggest.enablePreselect": true,
+    "suggest.noselect": true,
 	"coc.preferences.colorSupport": true,
 	// "python.jediEnabled": false,
 
