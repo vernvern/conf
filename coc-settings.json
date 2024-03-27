@@ -1,6 +1,7 @@
 {
-	"coc.preferences.colorSupport": true,
-	// "python.jediEnabled": false,
+    "suggest.enablePreselect": false,
+    "suggest.noselect": true,
+	"python.jediEnabled": true,
 
 	"languageserver": {
 		"ccls": {

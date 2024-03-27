@@ -9,9 +9,7 @@ set mouse="" " 禁止鼠标
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
-" git 状态栏 Plug 'airblade/vim-gitgutter'
 
 "彩虹括号
 "Plug 'kien/rainbow_parentheses.vim'
@@ -21,23 +19,25 @@ Plug 'luochen1990/rainbow'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" 注释
-Plug 'preservim/nerdcommenter'
-
 " markdown 实时查看
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+"Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 " 多个高亮搜索项
 Plug 'lfv89/vim-interestingwords'
 
 " 显示标记
-Plug 'kshenoy/vim-signature'
+" Plug 'kshenoy/vim-signature'
 
 " 竖线
 Plug 'Yggdroot/indentLine'
 
 " 格式化代码工具
 Plug 'chiel92/vim-autoformat'
+
+
+" fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 
 call plug#end()
 
@@ -149,30 +149,6 @@ set foldlevel=99
 "Enable folding with the spacebar   error
 " nnoremap <space> za
 
-" tab 选择补全
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <TAB>
-	  \ pumvisible() ? "\<C-n>" :
-	  \ <SID>check_back_space() ? "\<TAB>" :
-	  \ coc#refresh()
-
-
-"************************************************************
-"             vim-gitgutter                                 *
-"************************************************************
-
-highlight SignColumn guibg=black ctermbg=black
-
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-
-
-
 "************************************************************
 "         rainbow  彩虹括号                                 *
 "************************************************************
@@ -181,32 +157,6 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 
 
-
-"************************************************************
-"          'Yggdroot/LeaderF'                               *
-"************************************************************
-
-let g:Lf_ShortcutF = '<C-P>'
-" don't show the help in normal mode
-let g:Lf_HideHelp = 1
-let g:Lf_UseCache = 0
-let g:Lf_UseVersionControlTool = 0
-let g:Lf_IgnoreCurrentBufferName = 1
-
-" popup mode
-" let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-
-
-" noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
-noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e ")<CR>
-" search visually selected text literally
-" xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
-" noremap go :<C-U>Leaderf! rg --recall<CR>
-
-let g:Lf_ShowDevIcons = 1
 
 "************************************************************
 "              coc-nvim                                     *
@@ -230,7 +180,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=yes
+set signcolumn=no
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -245,6 +195,9 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -374,7 +327,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 
 "************************************************************
-"                chiel92/vim-autoformat'                    *
+"                chiel92/vim-autoformat                     *
 "************************************************************
 
 let g:formatdef_my_clang = '"clang-format"'
@@ -382,3 +335,21 @@ let g:formatters_cpp = ['my_clang']
 let g:formatters_c = ['my_clang']
 noremap <F9> :Autoformat<cr>
 " autocmd BufWritePre *.cpp,*.h  Autoformat  "  保存时触发
+"
+
+
+
+"************************************************************
+"                 junegunn/fzf                              *
+"************************************************************
+
+" 打开方式
+let g:fzf_action = { 'enter': 'tab split' }
+
+" 快捷方式
+nnoremap <F12> :FZF<cr>
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
